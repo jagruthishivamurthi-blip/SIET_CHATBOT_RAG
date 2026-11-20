@@ -17,15 +17,15 @@ def load_pdf (pdf_path):
 def create_chunks(full_text, chunksize = 500, overlap=100):
   chunks = []
   start = 0
-  while start<len(full_text):        #0<1000          400<1000         800<100
-    end = start + chunksize          #500             400+500=900      800+500=1300
-    chunk = full_text[start:end]     #[0:500]          [400:900]       [800:1300]
+  while start<len(full_text):        
+    end = start + chunksize          
+    chunk = full_text[start:end]     
     if chunk.strip():
       chunks.append(chunk)
-    start = chunksize - overlap       #500-100=400     900-100=800      1300-100=1200
+    start = chunksize - overlap       
   return chunks
   
-  def build_vectors (chunks, model_name = "all=MiniLM-L6-v2"):
+def build_vectors (chunks, model_name = "all=MiniLM-L6-v2"):
     if not chunks:
       raise ValueError("cannot apply embedding without chunks")
     embd_model = SentenceTransformer(model_name)
@@ -43,7 +43,7 @@ def load_base (pdf_path= "01_College_Information.pdf"):
   return embed_model,chunks, index
 
   
-  def retrieve_content (question, embed_model, chunks, index, num_shunks=3):
+def retrieve_content (question, embed_model, chunks, index, num_shunks=3):
     if not question.strip():
       raise ValueError("Question cannot be blank")
       if num_chunks < 1:
