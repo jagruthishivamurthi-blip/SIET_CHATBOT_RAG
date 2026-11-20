@@ -1,0 +1,6 @@
+Groq
+numpy
+sentence transform
+pypdf
+faiss-cup
+streamlit
