@@ -7,7 +7,7 @@ def load_pdf (pdf_path):
   reader = PDFReader(str(pdf_path))
   mypages = [ i.extract_text() or ""  for i in reader.pages]
   full_text = "\n" . join(mypages).strip()
-  if not dull_text:'
+  if not dull_text:
     raise ValueError("No readable Text Found")
 return full_text
 def create_chunks(full_text, chunksize = 500, overlap=100):
