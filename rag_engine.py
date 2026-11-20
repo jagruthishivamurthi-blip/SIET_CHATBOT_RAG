@@ -44,13 +44,14 @@ def  retrieve_content (question, embed_model, chunks, index, rum_chunks=3):
   sim_scores, vec_indices = index.search(query_embed, min(num_chunks, len(chunks))) 
   background = ""
   for i in vec_indices[0]:
+    if i != -1;
     background += chunks[i] + "\n\n"
   return background 
-def ask_rag (question, embed_model, chunks, index, api_key, num_chunks, model_name = "openai/gpt
+def ask_rag (question, embed_model, chunks, index, api_key, num_chunks, model_name = "openai/gpt-oss-120b"):
   key = api_key
   if not key:
     raise valueError("API key Missing")
-  background = retrieve_content(question, embed_model, chunks, index, num_chunks=
+  background = retrieve_content(question, embed_model, chunks, index, num_chunks=5)
   prompt = """you are an professional AI Assistant.
   Answer user question using ONLY document background below.
   Do not invent or assume facts.
