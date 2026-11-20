@@ -4,7 +4,7 @@ from groq import Groq
 from pypdf import PDFReader
 from sentence_trandformers import SentenceTransformer
 #load pdfs:
-def losd_pdf(pdf_path):
+def load_pdf(pdf_path):
   reader = PDFReader(str(pdf_path))
   mypages = [ i.extract_text() or "" for i in reader.pages] 
   full_text = "\n".join(mypages).strip()
